@@ -33,7 +33,7 @@ Route::prefix('admin')->group(function () {
     });
 
     Route::get('/category', function () {
-        echo 'Admi Page';
+        echo 'Admin Page';
     })->name('admin.category');
 });
 
