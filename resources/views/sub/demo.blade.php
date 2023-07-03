@@ -16,7 +16,35 @@
 
 {{$job}}
 
-<?php echo $job;?>
+<?php echo $job; ?>
+
+@if(isset($notificationError))
+    <p>{{$notificationError}}</p>
+@else
+    <p>Không có lỗi xảy ra</p>
+@endif
+
+<?php $age = 18; ?>
+@if($age<12)
+    <p>Nhi đồng</p>
+@elseif($age>12 && $age<18)
+    <p>Thiếu niên </p>
+@elseif($age>=18 && $age<40)
+    <p>Thanh niên</p>
+@else
+    <p>Trung nien trở lên</p>
+@endif
+
+<?php $weather = 'Trời mưa'; ?>
+@switch($weather)
+    @case('Trời nắng')
+       <p>Đi đá bóng</p>
+    @break
+
+    @case('Trời mưa')
+       <p>Ở nhà ngủ</p>
+    @break
+@endswitch
 
 </body>
 </html>

@@ -27,7 +27,7 @@ Route::get('/admin/category', function () {
 });*/
 
 Route::prefix('admin')->group(function () {
-    Route::get('/user/{id}/{name}', function ($id,$name) {
+    Route::get('/user/{id}/{name}', function ($id, $name) {
         echo 'user id is' . $id;
         echo 'username is' . $name;
     });
@@ -51,5 +51,6 @@ Route::get('/demo-view', function () {
     /*return view('sub.demo')->with('username', 'Luan')->with('address', 'QN');*/
     $username = 'Luan';
     $address = 'QN';
-    return view('sub.demo', compact('username', 'address'));
+    $notificationError = 'Có lỗi xảy ra';
+    return view('sub.demo', compact('username','address'));
 });
