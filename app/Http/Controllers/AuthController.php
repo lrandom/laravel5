@@ -12,8 +12,22 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
-    public function doLogin()
+    public function doLogin(Request $request)
     {
-        dd(\request()->all());
+        //validate
+        $request->validate([
+            'username' => 'required',
+            'password' => 'required|min:6|max:20'
+        ], [
+            'username.required' => 'Username không được để trống',
+            'password.required' => 'Mật khẩu không được để trống',
+            'password.min' => 'Mật khẩu ít nhất 6 ký tự',
+            'password.max' => 'Mật khẩu không quá 20 ký tự'
+        ]);
+
+        //chay tiep xuong duoi
+        //xu ly ABC
+        echo 'Xu ly tiep';
+
     }
 }

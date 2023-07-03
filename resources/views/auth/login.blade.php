@@ -9,9 +9,41 @@
 </head>
 <body>
 <form action="{{route('do-login')}}" method="post">
+    @foreach($errors->all() as $error)
+        <p>{{$error}}</p>
+    @endforeach
     @csrf
-    <input type="text" name="username" placeholder="username">
-    <input type="password" name="password" placeholder="password">
+    <label for="" style="display: block">
+        <input type="text" name="username" placeholder="username">
+        @if($errors->has('username'))
+            <p style="color:red">
+                {{$errors->first('username')}}
+            </p>
+        @endif
+
+        @error('username')
+            <p style="color:red">
+                {{$message}}
+            </p>
+        @enderror
+
+    </label>
+
+    <label for="" style="display: block">
+        <input type="password" name="password" placeholder="password">
+        @if($errors->has('password'))
+            <p style="color:red">
+                {{$errors->first('password')}}
+            </p>
+        @endif
+
+        @error('password')
+            <p style="color:red">
+                {{$message}}
+            </p>
+        @enderror
+    </label>
+
     <button type="submit">Login</button>
 </form>
 </body>
