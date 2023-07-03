@@ -8,16 +8,11 @@
     <title>Document</title>
 </head>
 <body>
-@includeIf('sub.nav',['username'=>'Nguyen Van A'])
- <ul>
-     @foreach($collection as $item)
-     <li>{{$item}}</li>
-     @endforeach
-
-     @for($i=0;$i<count($collection);$i++)
-         <li>{{$collection[$i]}}</li>
-     @endfor
-
- </ul>
+<form action="{{route('do-login')}}" method="post">
+    @csrf
+    <input type="text" name="username" placeholder="username">
+    <input type="password" name="password" placeholder="password">
+    <button type="submit">Login</button>
+</form>
 </body>
 </html>

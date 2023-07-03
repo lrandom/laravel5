@@ -66,3 +66,7 @@ Route::get('/demo-view-2', function () {
     return view('sub.demo-2',compact('collection'));
 
 });
+
+
+Route::get('/login',[\App\Http\Controllers\AuthController::class,'login'])->name('login');
+Route::post('/do-login',[App\Http\Controllers\AuthController::class,'doLogin'])->name('do-login');
