@@ -54,3 +54,15 @@ Route::get('/demo-view', function () {
     $notificationError = 'Có lỗi xảy ra';
     return view('sub.demo', compact('username','address'));
 });
+
+
+Route::get('/demo-view-2', function () {
+    $collection = [
+        'Luan',
+        'Quang Nam',
+        'Hue',
+        'Da Nang'
+    ];
+    return view('sub.demo-2',compact('collection'));
+
+});
