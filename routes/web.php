@@ -42,3 +42,14 @@ Route::get('/about', function () {
 });
 
 
+Route::get('/demo-view', function () {
+    /*return view('sub.demo',[
+        'username'=>'Luan',
+        'address'=>'QN'
+    ]);*/
+
+    /*return view('sub.demo')->with('username', 'Luan')->with('address', 'QN');*/
+    $username = 'Luan';
+    $address = 'QN';
+    return view('sub.demo', compact('username', 'address'));
+});
