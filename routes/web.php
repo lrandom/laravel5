@@ -79,3 +79,6 @@ Route::get('/home', function () {
 Route::get('/contact', function () {
     return view('contact');
 });
+
+
+require_once __DIR__ . '/demo_session_3.php';
