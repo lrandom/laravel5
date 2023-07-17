@@ -14,13 +14,15 @@ class CategoryFactory extends Factory
      *
      * @return array<string, mixed>
      */
+    protected $model = \App\Models\Category::class;
+
     public function definition(): array
     {
         return [
             //
             "name" => $this->faker->name,
-            "parent_id" => 0,
-            "path" => null,
+            "parent_id" => $this->faker->randomNumber(),
+            "path" => $this->faker->imageUrl(),
         ];
     }
 }
