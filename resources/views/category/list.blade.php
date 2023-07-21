@@ -19,6 +19,7 @@
     <tr>
         <th>ID</th>
         <th>Name</th>
+        <th>Products</th>
     </tr>
     </thead>
 
@@ -27,6 +28,35 @@
         <tr>
             <td>{{$category->id}}</td>
             <td>{{$category->name}}</td>
+            <td>
+                @if($category->products)
+                    <ul>
+                        @foreach($category->products as $product)
+                            <li>{{$product->name}}</li>
+                        @endforeach
+                    </ul>
+                @endif
+            </td>
+        </tr>
+    @endforeach
+    </tbody>
+</table>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Category</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    @foreach($products as $product)
+        <tr>
+            <td>{{$product->id}}</td>
+            <td>{{$product->name}}</td>
+            <td>{{$product->category->name}}</td>
         </tr>
     @endforeach
     </tbody>
