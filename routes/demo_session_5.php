@@ -14,4 +14,10 @@ Route::get('users', function () {
     $userInfos = \App\Models\UserInfo::all();
     return view('user.list', compact('users','userInfos'));
 });
+
+Route::get('actor-film', function () {
+    $actors = \App\Models\Actor::all();
+    $films= \App\Models\Film::all();
+    return view('film', compact('actors','films'));
+});
 ?>
