@@ -22,7 +22,7 @@ class CategoryFactory extends Factory
             //
             "name" => $this->faker->name,
             "parent_id" => $this->faker->randomNumber(),
-            "path" => $this->faker->imageUrl(),
+            "path" => fake()->imageUrl(),
         ];
     }
 }
