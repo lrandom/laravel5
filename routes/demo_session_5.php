@@ -16,6 +16,7 @@ Route::get('users', function () {
 });
 
 Route::get('actor-film', function () {
+    //dd(\App\Models\Actor::class);
     $actors = \App\Models\Actor::all();
     $films= \App\Models\Film::all();
     return view('film', compact('actors','films'));
