@@ -22,8 +22,10 @@
     @foreach($actors as $actor)
         <tr>
             <td>
-                @if($actor->image)
-                    <img src="{{$actor->image->path}}"/>
+                @if($actor->images)
+                    @foreach($actor->images as $image)
+                        <img src="{{$image->path}}"/>
+                    @endforeach
                 @endif
             </td>
             <td>{{$actor->id}}</td>
@@ -56,8 +58,11 @@
         <tr>
             <td>
 
-                @if($film->image)
-                    <img src="{{$film->image->path}}"/>
+                @if($film->images)
+                    @foreach($film->images as $image)
+                        <img src="{{$image->path}}"/>
+                    @endforeach
+
                 @endif
             </td>
             <td>{{$film->id}}</td>
