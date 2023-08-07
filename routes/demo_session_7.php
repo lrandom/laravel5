@@ -67,6 +67,39 @@ Route::get('demo', function () {
 
     $pureArr = $mang->toArray();
     dd($pureArr);
-
 });
+
+
+Route::get('upload-form', function () {
+    return view('upload-form');
+});
+
+Route::post('store-file', function () {
+    $file = request()->file('file');
+    $file->store('images');
+    $file->storeAs('public/images', $file->getClientOriginalName());
+    return 'success';
+})->name('store-file');
+
+Route::get('show-image', function () {
+    return view('show-image');
+});
+
+
+Route::get('gallery', function () {
+    $photos = \App\Models\Photo::all();
+    return view('gallery', compact('photos'));
+});
+
+Route::post('gallery', function () {
+    if (request('file')) {
+        $file = request('file');
+        $fileName = time() . $file->getClientOriginalName();
+        $file->storeAs('public/images', $fileName);
+        $photo = new \App\Models\Photo();
+        $photo->path = 'storage/images/' . $fileName;
+        $photo->save();
+    }
+    return redirect()->back();
+})
 ?>
