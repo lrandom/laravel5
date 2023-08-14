@@ -8,12 +8,14 @@
     <title>Document</title>
 </head>
 <body>
-   {{$authUser->name}}
-   {{$authUser->email}}
-
-<form action="{{route('my-logout')}}" method="post">
+<form action="{{route('do-login')}}" method="post">
     @csrf
-    <button>Logout</button>
+    @if(session('error'))
+        <div class="alert alert-danger">{{session('error')}}</div>
+    @endif
+    <input type="text" name="email" placeholder="Email">
+    <input type="password" name="password" placeholder="password">
+    <input type="submit" value="Login">
 </form>
 </body>
 </html>

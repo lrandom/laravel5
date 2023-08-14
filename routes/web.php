@@ -34,4 +34,23 @@ Route::get('/my-profile', function () {
 })->middleware(['auth'])->name('my-profile');
 
 
+Route::get('/my-login', function () {
+    return view('my-login');
+})->name('my-login');
+
+Route::post('/do-login', function () {
+    if (\Illuminate\Support\Facades\Auth::attempt([
+        'email' => request('email'),
+        'password' => request('password')])) {
+        return redirect()->route('my-profile');
+    } else {
+        return redirect()->back()->with('error', 'Invalid login details');
+    }
+})->name('do-login');
+
+Route::post('my-logout', function () {
+    \Illuminate\Support\Facades\Auth::logout();
+    return redirect()->route('my-login');
+})->name('my-logout');
+
 require __DIR__ . '/auth.php';
