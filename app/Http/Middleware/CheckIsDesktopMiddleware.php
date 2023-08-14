@@ -22,6 +22,4 @@ class CheckIsDesktopMiddleware
         }
         return $next($request);
     }
-
-
 }
