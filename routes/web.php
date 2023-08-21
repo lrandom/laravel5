@@ -66,3 +66,12 @@ Route::get("/send-mail", function () {
 Route::get('/preview-mail', function () {
     return new \App\Mail\OrderMail("0002");
 });
+
+Route::get('/send-birthday-mail', function () {
+    for ($i = 0; $i < 10; $i++) {
+        $name = "Nam " . $i;
+        $age = rand(1, 100);
+        dispatch(new \App\Jobs\SendEmailBirthDay($name, $age));
+    }
+});
+
