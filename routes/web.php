@@ -56,3 +56,8 @@ Route::post('my-logout', function () {
 require __DIR__ . '/auth.php';
 
 require __DIR__ . '/session.php';
+
+
+Route::get("/send-mail", function () {
+    \Illuminate\Support\Facades\Mail::to("mmochicken92@gmail.com")->send(new \App\Mail\BirthdayMail());
+});
