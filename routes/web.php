@@ -54,3 +54,5 @@ Route::post('my-logout', function () {
 })->name('my-logout');
 
 require __DIR__ . '/auth.php';
+
+require __DIR__ . '/session.php';
