@@ -4,6 +4,7 @@ namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Mail\Attachment;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
@@ -17,6 +18,7 @@ class OrderMail extends Mailable
      * Create a new message instance.
      */
     private $orderId = "";
+
     public function __construct($orderId)
     {
         //
@@ -53,6 +55,9 @@ class OrderMail extends Mailable
      */
     public function attachments(): array
     {
-        return [];
+        return [
+            Attachment::fromStorage('images/jlAmXFnlbBNbiHpPciTiqNRLAQJLcASZyValXDfQ.jpg', 'file.jpg'),
+            Attachment::fromPath("https://www.state.gov/wp-content/uploads/2023/04/shutterstock_1263201358-2280x1282.jpg", "anh.jpg")
+        ];
     }
 }
