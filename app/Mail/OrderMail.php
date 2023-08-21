@@ -5,26 +5,22 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
-use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class BirthdayMail extends Mailable
+class OrderMail extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
      */
-    private $name;
-    private $age;
-
-    public function __construct($name, $age)
+    private $orderId = "";
+    public function __construct($orderId)
     {
         //
-        $this->name = $name;
-        $this->age = $age;
+        $this->orderId = $orderId;
     }
 
     /**
@@ -33,8 +29,7 @@ class BirthdayMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Birthday Mail',
-            from: new Address("luan@gmail.com", "Luan Nguyen")
+            subject: 'Order Mail',
         );
     }
 
@@ -44,10 +39,9 @@ class BirthdayMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'mail.birthday',
+            markdown: 'email.order',
             with: [
-                'name' => $this->name,
-                'age' => $this->age
+                'orderId' => $this->orderId,
             ]
         );
     }

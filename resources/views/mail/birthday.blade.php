@@ -1,1 +1,1 @@
-<p>HPBD Luan Nguyen</p>
+<p>HPBD {{$name}} reach {{$age}}</p>

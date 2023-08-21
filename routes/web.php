@@ -59,5 +59,10 @@ require __DIR__ . '/session.php';
 
 
 Route::get("/send-mail", function () {
-    \Illuminate\Support\Facades\Mail::to("mmochicken92@gmail.com")->send(new \App\Mail\BirthdayMail());
+    \Illuminate\Support\Facades\Mail::to("mmochicken92@gmail.com")
+        ->send(new \App\Mail\OrderMail("0001"));
+});
+
+Route::get('/preview-mail', function () {
+    return new \App\Mail\OrderMail("0002");
 });
