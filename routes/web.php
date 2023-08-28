@@ -75,3 +75,10 @@ Route::get('/send-birthday-mail', function () {
     }
 });
 
+Route::get('/welcome', function () {
+    $lang = request('lang') ?? session()->get('lang') ?? config('app.locale');
+    \Illuminate\Support\Facades\App::setLocale($lang);
+    session()->put('lang', $lang);
+    return view('welcome');
+})->middleware([\App\Http\Middleware\SetLocaleMiddleware::class]);
+
