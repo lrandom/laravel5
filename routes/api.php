@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Api\UserController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -25,9 +25,9 @@ Route::middleware('auth:api')->get('v1/me', function () {
 
 //api/v1/users
 Route::prefix('v1/users')->group(function () {
-    Route::get('', [\Database\migrations\UserController::class, 'getUsers']);
-    Route::get('/{id}', [\Database\migrations\UserController::class, 'getUser']);
-    Route::post('', [\Database\migrations\UserController::class, 'addUser']);
-    Route::delete('/{id}', [\Database\migrations\UserController::class, 'deleteUser']);
-    Route::put('/{id}', [\Database\migrations\UserController::class, 'updateUser']);
+    Route::middleware('auth:api')->get('', [UserController::class, 'getUsers']);
+    /*    Route::get('/{id}', [UserController::class, 'getUser']);
+        Route::post('', [UserController::class, 'addUser']);
+        Route::delete('/{id}', [UserController::class, 'deleteUser']);
+        Route::put('/{id}', [UserController::class, 'updateUser']);*/
 });
